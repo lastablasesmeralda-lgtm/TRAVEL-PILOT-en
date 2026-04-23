@@ -1224,7 +1224,7 @@ export const AppProvider = ({ children }) => {
             route: `${data.departure?.iata} > ${data.arrival?.iata}`,
             status: 'LEGAL FILE PREPARED',
             delayActual: effectiveDelay,
-            compensation: getEU261Amount(data),
+            compensation: getEU261Amount(data) === 'US_DOMESTIC' ? 'US DOT RIGHTS' : `${getEU261Amount(data)}€`,
             isDynamic: true,
             // Passenger data extracted from API and profile
             passengerName: user?.displayName || null,
@@ -1236,7 +1236,10 @@ export const AppProvider = ({ children }) => {
             airlineAddress: `${data.airline || 'Airline'} · Passenger Service Dept.`,
           };
           // SAVINGS INCREMENT: Generating a claim recovers real money
-          setRecoveredMoney(prev => prev + parseFloat(getEU261Amount(data).replace('€', '')));
+          const amount = getEU261Amount(data);
+          if (amount !== 'US_DOMESTIC') {
+            setRecoveredMoney(prev => prev + parseFloat(amount.replace('€', '')));
+          }
           setSavedTime(prev => prev + 1); // Generating the claim saves 1h of paperwork
           return [newClaim, ...prev];
         });

@@ -43,6 +43,9 @@ export default function VIPAlternatives({
  
     const delay = flightData?.delayMinutes || flightData?.departure?.delay || 0;
     const isMajorIssue = delay >= 120 || flightData?.status === 'cancelled' || flightData?.status === 'diverted' || flightData?.status === 'RETRASO-400';
+    
+    const amount = getEU261Amount(flightData);
+    const isUS = amount === 'US_DOMESTIC';
 
     const handleClose = () => {
         setDetailView(null);
@@ -135,7 +138,7 @@ export default function VIPAlternatives({
                         <View style={{ backgroundColor: '#0A0A0A', borderRadius: 14, padding: 16, marginBottom: 20 }}>
                             {[
                                 { label: 'WHAT TO REQUEST', value: `Relocation on next flight to ${arrIata}` },
-                                { label: 'TU DERECHO', value: 'EU261 — Reubicación gratuita' },
+                                { label: 'YOUR RIGHT', value: isUS ? 'US DOT — Priority Relocation' : 'EU261 — Free Relocation' },
                                 { label: 'TELÉFONO', value: formattedPhone },
                             ].map((item, idx) => (
                                 <View key={idx} style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 10, borderBottomWidth: idx < 2 ? 1 : 0, borderBottomColor: '#1A1A1A' }}>
@@ -202,7 +205,7 @@ export default function VIPAlternatives({
                     <View style={{ backgroundColor: '#111', paddingTop: 40, paddingBottom: 25, paddingHorizontal: 25, borderBottomWidth: 1, borderBottomColor: '#222', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                         <View>
                             <Text style={{ color: '#4CD964', fontSize: 10, fontWeight: '900', letterSpacing: 2, marginBottom: 6 }}>⚖️ INFO RECOPILADA</Text>
-                            <Text style={{ color: '#FFF', fontSize: 22, fontWeight: '900' }}>EU261 Claim</Text>
+                            <Text style={{ color: '#FFF', fontSize: 22, fontWeight: '900' }}>{isUS ? 'US DOT Assistance' : 'EU261 Claim'}</Text>
                         </View>
                         <TouchableOpacity onPress={() => setDetailView(null)} style={{ padding: 10 }}>
                             <Text style={{ color: '#4CD964', fontSize: 16 }}>✕</Text>
@@ -213,10 +216,10 @@ export default function VIPAlternatives({
                             {[
                                 { label: 'FLIGHT', value: flightData?.flightNumber || flightData?.flight?.iata || '—' },
                                 { label: 'AIRLINE', value: airline },
-                                { label: 'RUTA', value: `${depIata} → ${arrIata}` },
+                                { label: 'ROUTE', value: `${depIata} → ${arrIata}` },
                                 { label: 'DELAY', value: `${flightData?.departure?.delay || 185} min` },
-                                { label: 'COMPENSACIÓN', value: getEU261Amount(flightData) },
-                                { label: 'ESTADO', value: 'EU261 ELEGIBLE' },
+                                { label: 'COMPENSATION', value: isUS ? 'DOT ASSISTANCE' : amount },
+                                { label: 'STATUS', value: isUS ? 'DOT ELIGIBLE' : 'EU261 ELEGIBLE' },
                             ].map((item, idx) => (
                                 <View key={idx} style={{ flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 10, borderBottomWidth: idx < 5 ? 1 : 0, borderBottomColor: '#1A1A1A' }}>
                                     <Text style={{ color: '#666', fontSize: 10, fontWeight: '900', letterSpacing: 1 }}>{item.label}</Text>
@@ -228,7 +231,7 @@ export default function VIPAlternatives({
                         <View style={{ backgroundColor: 'rgba(76,217,100,0.06)', padding: 14, borderRadius: 12, borderWidth: 0.5, borderColor: 'rgba(76,217,100,0.2)', marginBottom: 20 }}>
                             <Text style={{ color: '#4CD964', fontSize: 11, fontWeight: '800', marginBottom: 6 }}>Legal report prepared:</Text>
                             <Text style={{ color: '#999', fontSize: 11, lineHeight: 17 }}>
-                                Dear {airline}. Following the incident detected on flight {flightData?.flightNumber || flightData?.flight?.iata || '—'} between {depIata} and {arrIata}, with a verified delay of more than 3 hours, we proceed to formalize the compensation request in accordance with Regulation (EC) 261/2004. As a passenger with the right to assistance, I attach the details collected by FlightPilot for your immediate processing.
+                                Dear {airline}. Following the incident detected on flight {flightData?.flightNumber || flightData?.flight?.iata || '—'} between {depIata} and {arrIata}, with a verified delay of more than 3 hours, we proceed to formalize the assistance request in accordance with {isUS ? 'US DOT Passenger Protection' : 'Regulation (EC) 261/2004'}. As a passenger with the right to assistance, I attach the details collected by FlightPilot for your immediate processing.
                             </Text>
                         </View>
 

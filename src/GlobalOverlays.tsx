@@ -907,14 +907,19 @@ export default function GlobalOverlays() {
                                                 return [newClaim, ...prev]
                                             })
                                             setCurrentClaimForSig(newClaim)
+                                            const amount = getEU261Amount(flightData);
+                                            const isUS = amount === 'US_DOMESTIC';
                                             setTab('Vault')
                                             setTimeout(() => {
                                                 setShowSignature(true)
-                                                speak("I have prepared your 250 euro claim. Enter your ID and sign to finish.")
+                                                speak(isUS 
+                                                    ? "I have prepared your passenger rights assistance file. Enter your ID and sign to finish."
+                                                    : `I have prepared your ${amount} euro claim. Enter your ID and sign to finish.`);
                                             }, 500)
                                         }}
                                     >
-                                        <Text style={{ color: '#000', fontWeight: 'bold' }}>⚖️ 3. SOLICITAR INDEMNIZACIÓN</Text>
+                                        <Text style={{ color: '#000', fontWeight: 'bold' }}>⚖️ 3. {getEU261Amount(flightData) === 'US_DOMESTIC' ? 'REQUEST PASSENGER ASSISTANCE' : 'REQUEST INDEMNITY'}</Text>
+
                                     </TouchableOpacity>
                                 </View>
                             ) : (
