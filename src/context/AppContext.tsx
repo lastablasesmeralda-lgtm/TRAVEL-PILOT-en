@@ -1365,7 +1365,7 @@ export const AppProvider = ({ children }) => {
 
     const instantPlan = {
       options: allOptions,
-      impact: { hotelAlert: \"I have secured your accommodation booking. No risk of cancellation.\" }
+      impact: { hotelAlert: "I have secured your accommodation booking. No risk of cancellation." }
     };
 
     if (travelProfile !== 'premium') {
