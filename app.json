@@ -33,9 +33,7 @@
     "plugins": [
       "expo-mail-composer"
     ],
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
+    "runtimeVersion": "1.0.0",
     "extra": {
       "eas": {}
     }
