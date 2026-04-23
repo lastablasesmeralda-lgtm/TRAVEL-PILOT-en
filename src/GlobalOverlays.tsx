@@ -909,16 +909,26 @@ export default function GlobalOverlays() {
                                             setCurrentClaimForSig(newClaim)
                                             const amount = getEU261Amount(flightData);
                                             const isUS = amount === 'US_DOMESTIC';
+                                            const isLatam = amount === 'LATAM_DOMESTIC';
                                             setTab('Vault')
                                             setTimeout(() => {
                                                 setShowSignature(true)
-                                                speak(isUS 
-                                                    ? "I have prepared your passenger rights assistance file. Enter your ID and sign to finish."
-                                                    : `I have prepared your ${amount} euro claim. Enter your ID and sign to finish.`);
+                                                if (isLatam) {
+                                                    speak("I have prepared your international assistance file based on the Montreal Convention and local consumer laws. Enter your ID and sign to finish.");
+                                                } else if (isUS) {
+                                                    speak("I have prepared your passenger rights assistance file. Enter your ID and sign to finish.");
+                                                } else {
+                                                    speak(`I have prepared your ${amount} euro claim. Enter your ID and sign to finish.`);
+                                                }
                                             }, 500)
                                         }}
                                     >
-                                        <Text style={{ color: '#000', fontWeight: 'bold' }}>⚖️ 3. {getEU261Amount(flightData) === 'US_DOMESTIC' ? 'REQUEST PASSENGER ASSISTANCE' : 'REQUEST INDEMNITY'}</Text>
+                                        <Text style={{ color: '#000', fontWeight: 'bold' }}>
+                                            ⚖️ 3. {getEU261Amount(flightData) === 'US_DOMESTIC' ? 'REQUEST PASSENGER ASSISTANCE' : 
+                                                   getEU261Amount(flightData) === 'LATAM_DOMESTIC' ? 'REQUEST CONSUMER PROTECTION' : 
+                                                   'REQUEST INDEMNITY'}
+                                        </Text>
+
 
                                     </TouchableOpacity>
                                 </View>
