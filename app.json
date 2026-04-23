@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Travel-Pilot",
+    "slug": "travel-pilot-en",
+    "privacy": "public",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.travelpilot.en.app"
+    },
+    "android": {
+      "package": "com.travelpilot.en.app",
+      "permissions": [
+        "INTERNET",
+        "INTERNET",
+        "INTERNET",
+        "INTERNET"
+      ],
+      "softwareKeyboardLayoutMode": "resize",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      }
+    },
+    "plugins": [
+      "expo-mail-composer"
+    ],
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "extra": {
+      "eas": {}
+    }
+  }
+}

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel-Pilot | Tu Copiloto Inteligente de Viaje</title>
+    <meta name="description"
+        content="Protección proactiva que vigila tus vuelos y resuelve crisis al instante mientras tú descansas.">
+    <link rel="stylesheet" href="style.css?v=2.2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Inter:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="#hero" style="text-decoration: none;">
+                    <span class="logo-text">TRAVEL<span class="gradient-text">-PILOT</span></span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#how-it-works">Cómo funciona</a></li>
+                <li><a href="#simulator">Simulador</a></li>
+                <li><a href="#pricing">Planes</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#beta-form" class="nav-cta">Beta</a></li>
+            </ul>
+            <div class="status-indicator">
+                <span class="status-dot"></span> ACCESO BETA ELITE
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="badge">SISTEMA DE ASISTENCIA INTELIGENTE // v1.0 (BETA)</span>
+                    <h1>TU VIAJE, SIEMPRE BAJO CONTROL</h1>
+                    <p class="hero-subtitle">Tu asistente inteligente que vigila tus vuelos, detecta incidencias y
+                        activa respuestas inteligentes en tiempo real.</p>
+
+                    <div class="hero-description">
+                        <h3>Asistencia Inteligente</h3>
+                        <ul class="features-list-simple">
+                            <li><strong>Asistencia Proactiva:</strong> Cuidamos cada segundo de tu itinerario ante
+                                cualquier incidencia.</li>
+                            <li><strong>Acceso Ininterrumpido:</strong> Consulta tus documentos y accede a recursos
+                                clave incluso sin conexión; para el monitoreo en tiempo real y las acciones online, se
+                                requiere internet.</li>
+                            <li><strong>Gestión de Soluciones:</strong> Travel-Pilot analiza la incidencia y te presenta
+                                en segundos alternativas de hotel, rutas y pasos de reclamación; la automatización total
+                                está desplegándose progresivamente en beta.</li>
+                        </ul>
+                    </div>
+
+                    <div id="how-it-works" class="how-it-works">
+                        <h2 class="section-subtitle">CÓMO FUNCIONA</h2>
+                        <div class="steps-grid">
+                            <div class="step-card">
+                                <span class="step-num">01</span>
+                                <span class="step-icon">✈️</span>
+                                <h3>REGISTRA TU VIAJE</h3>
+                                <p>Crea tu próximo destino en segundos. Pulsa el botón [+ Nuevo Viaje], añade tu vuelo y
+                                    Travel-Pilot activa al instante su seguimiento con fuentes globales de estado y
+                                    tráfico aéreo.</p>
+                            </div>
+                            <div class="step-card">
+                                <span class="step-num">02</span>
+                                <span class="step-icon">🛡️</span>
+                                <h3>PROTECCIÓN 24/7</h3>
+                                <p>Olvida estar pendiente de las pantallas del aeropuerto. Travel-Pilot rastrea tu vuelo
+                                    de forma constante y te informa de cualquier cambio para que tú solo te preocupes de
+                                    disfrutar.</p>
+                            </div>
+                            <div class="step-card">
+                                <span class="step-num">03</span>
+                                <span class="step-icon">⚡</span>
+                                <h3>ACTUAMOS POR TI</h3>
+                                <p>Sin formularios. Sin esperas. Travel-Pilot te asiste en tiempo real con alternativas,
+                                    pasos de compensación y respuestas rápidas cuando el viaje se complica.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <div class="hero-registration-grid" id="beta-form">
+                            <!-- Columna izquierda: Formulario -->
+                            <div class="terminal-portal">
+                                <div class="terminal-header">SOLICITAR ACCESO</div>
+                                <div class="terminal-field">
+                                    <label for="hero-type" class="terminal-label">TIPO_DE_VIAJERO:</label>
+                                    <div class="terminal-input-group">
+                                        <span class="terminal-prompt">></span>
+                                        <select id="hero-type" class="terminal-input">
+                                            <option value="Particular">Particular</option>
+                                            <option value="Viajero frecuente">Viajero frecuente</option>
+                                            <option value="Profesional / ejecutivo">Profesional / ejecutivo</option>
+                                            <option value="Empresa / equipo">Empresa / equipo</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="terminal-field" style="margin-top: 15px;">
+                                    <label for="hero-goal" class="terminal-label">OBJETIVO_PRINCIPAL:</label>
+                                    <div class="terminal-input-group">
+                                        <span class="terminal-prompt">></span>
+                                        <select id="hero-goal" class="terminal-input">
+                                            <option value="Retrasos y cancelaciones">Retrasos y cancelaciones</option>
+                                            <option value="Compensaciones por incidencias">Compensaciones por
+                                                incidencias</option>
+                                            <option value="Alternativas de hotel o transporte">Alternativas de hotel o
+                                                transporte</option>
+                                            <option value="Organización y seguimiento del viaje">Organización y
+                                                seguimiento del viaje</option>
+                                            <option value="Asistencia premium durante el viaje">Asistencia premium
+                                                durante el viaje</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="terminal-field" style="margin-top: 15px;">
+                                    <label for="hero-email" class="terminal-label">CORREO_ELECTRÓNICO:</label>
+                                    <div class="terminal-input-group">
+                                        <span class="terminal-prompt">></span>
+                                        <input type="email" id="hero-email" class="terminal-input"
+                                            placeholder="TU_CORREO_ELECTRÓNICO...">
+                                        <button onclick="registerBeta('hero-email')"
+                                            class="terminal-btn">UNIRSE</button>
+                                    </div>
+                                </div>
+                                <div id="hero-email-status" class="terminal-status">✔ PLAZAS DISPONIBLES — ACCESO
+                                    GRATUITO DURANTE LA BETA</div>
+                                <div class="terminal-counter-box">
+                                    <span class="t-label">SOLICITUDES_ACTUALES:</span>
+                                    <span class="t-number" id="global-counter">--</span>
+                                </div>
+                            </div>
+
+                            <!-- Columna derecha: El espacio azul que marcaste -->
+                            <div class="beta-info-column">
+                                <div class="hero-status">
+                                    <h3>ACCESO EXCLUSIVO BETA</h3>
+                                    <p>Estamos ultimando el primer sistema de inteligencia artificial dedicado a proteger al viajero exigente. Al unirte hoy a la fase beta, tendrás acceso prioritario a la protección inteligente de tus vuelos mientras activamos progresivamente las automatizaciones avanzadas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-showcase">
+                    <img src="assets/app_screens/hero_resolucion.jpg" alt="Resolución de Crisis" class="mockup-main">
+                    <img src="assets/app_screens/hero_opciones.jpg" alt="Opciones VIP" class="overlay-card floating">
+                </div>
+            </div>
+        </section>
+
+        <section id="showcase" class="showcase">
+            <div class="container">
+                <h2 class="section-title">DESCUBRE EL PODER DE TRAVEL-PILOT</h2>
+                <div class="pillar-grid-5">
+                    <!-- INICIO -->
+                    <div class="pillar-card vertical glass">
+                        <div class="pillar-image">
+                            <img src="assets/app_screens/tarjeta_inicio.jpg" alt="Centro de Mando">
+                        </div>
+                        <div class="pillar-info">
+                            <span class="protocol-num">INICIO</span>
+                            <h3>Tu asistente, tu viaje</h3>
+                            <p>Tu itinerario organizado de principio a fin. Consulta las previsiones, tus escalas y deja
+                                que tu asistente inteligente te mantenga al día de forma impecable.</p>
+                        </div>
+                    </div>
+
+                    <!-- VIP (ESTRELLA - EN EL CENTRO) -->
+                    <div class="pillar-card vertical glass highlighted-vip">
+                        <div class="pillar-image">
+                            <img src="assets/app_screens/tarjeta_vip.jpg" alt="Universo VIP">
+                        </div>
+                        <div class="pillar-info">
+                            <span class="protocol-num">VIP</span>
+                            <h3>UNIVERSO VIP</h3>
+                            <p>La experiencia definitiva. Desplegamos soluciones de alto impacto para que tu viaje nunca
+                                pierda su categoría premium. IA al mando.</p>
+                        </div>
+                    </div>
+
+                    <!-- VUELOS -->
+                    <div class="pillar-card vertical glass">
+                        <div class="pillar-image">
+                            <img src="assets/app_screens/tarjeta_vuelos.jpg" alt="Radar de Vuelos">
+                        </div>
+                        <div class="pillar-info">
+                            <span class="protocol-num">VUELOS</span>
+                            <h3>Vigilancia Inteligente</h3>
+                            <p>Control total de tus trayectos. Detectamos cualquier alteración en tu vuelo antes que
+                                nadie y te mantenemos informado para asegurar un viaje sin sorpresas desagradables.</p>
+                        </div>
+                    </div>
+
+                    <!-- DOCUMENTOS -->
+                    <div class="pillar-card horizontal glass">
+                        <div class="pillar-image">
+                            <img src="assets/app_screens/docs.jpg" alt="Bóveda Digital">
+                        </div>
+                        <div class="pillar-info">
+                            <span class="protocol-num">DOCS</span>
+                            <h3>Bóveda Digital</h3>
+                            <p>Tus documentos críticos a salvo y disponibles sin conexión en cualquier parte del mundo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- PERFIL -->
+                    <div class="pillar-card horizontal glass">
+                        <div class="pillar-image">
+                            <img src="assets/app_screens/tarjeta_perfil.jpg" alt="Perfil Inteligente">
+                        </div>
+                        <div class="pillar-info">
+                            <span class="protocol-num">PERFIL</span>
+                            <h3>Elige tu suscripción</h3>
+                            <p>Configura tu cuenta y decide cómo quieres viajar. Cambia entre el modo gratuito o VIP,
+                                elige tu voz de acompañamiento y gestiona toda tu información en segundos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIMULADOR DE CRISIS -->
+        <section id="simulator" class="simulator-section">
+            <div class="sim-container">
+                <div class="sim-header">
+                    <span class="protocol-num">INTELIGENCIA EN VIVO</span>
+                    <h2>Simulador de Respuesta AI</h2>
+                    <p>Prueba una simulación realista de la respuesta que Travel-Pilot ofrece cuando detecta una
+                        incidencia.</p>
+                </div>
+
+                <div class="sim-stage">
+                    <!-- Estado inicial -->
+                    <button id="trigger-btn" class="trigger-btn" onclick="startSimulation()">SIMULAR RETRASO DE
+                        VUELO</button>
+
+                    <!-- Estado: Escaneando -->
+                    <div id="scanning-ui" class="scanning-ui">
+                        <div class="radar-circle"></div>
+                        <div class="scanning-text">DETECTANDO INCIDENCIA...</div>
+                    </div>
+
+                    <!-- Estado: Resuelto -->
+                    <div id="plans-ui" class="plans-ui">
+                        <div class="plan-card-sim" onclick="selectPlan('ECONOMICO')">
+                            <span class="plan-tag">OPCIÓN 01: ESTÁNDAR</span>
+                            <h4>ESTÁNDAR</h4>
+                            <div class="price">Prioridad: Gestión Básica</div>
+                            <div class="time">Monitorización y alertas en tiempo real</div>
+                        </div>
+                        <div class="plan-card-sim vip" onclick="selectPlan('RAPIDO')">
+                            <span class="plan-tag">OPCIÓN 02: VIP</span>
+                            <h4>VIP (BETA ELITE)</h4>
+                            <div class="price">Prioridad: Resolución Total</div>
+                            <div class="time">Gestión automática de vuelos y reclamaciones</div>
+                        </div>
+                    </div>
+
+                    <!-- Estado: Respuesta IA -->
+                    <div id="sim-response" class="sim-response">
+                        <div class="ia-avatar"></div>
+                        <div class="ia-msg">
+                            <span class="ia-name">ASISTENTE CLARA</span>
+                            <p id="ia-text">Excelente elección. Estoy sincronizando tu Bóveda Digital con las nuevas
+                                tarjetas de embarque.</p>
+                        </div>
+                        <div class="reset-sim-wrapper">
+                            <button class="reset-sim" onclick="resetSimulation()">VOLVER A EMPEZAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VOCES PREMIUM -->
+        <section id="voices" class="voices-section">
+            <div class="container">
+                <div class="voice-card glass">
+                    <span class="protocol-num">TECNOLOGÍA NEURAL</span>
+                    <h2>Escucha a tu Asistente</h2>
+                    <p>Elige entre una variedad de voces optimizadas por IA para una asistencia humana y exclusiva.</p>
+
+                    <div class="voice-grid">
+                        <div class="voice-item" onclick="playVoice('Clara')">
+                            <div class="play-btn"></div>
+                            <div class="voice-info">
+                                <h4>CLARA</h4>
+                                <span id="clara-status">Castellano / Inteligente</span>
+                            </div>
+                            <div class="v-waves"><span></span><span></span><span></span></div>
+                            <div class="stop-audio" id="clara-stop" onclick="stopCurrentVoice(event, 'clara')">✕</div>
+                        </div>
+                        <div class="voice-item" onclick="playVoice('Marco')">
+                            <div class="play-btn"></div>
+                            <div class="voice-info">
+                                <h4>MARCO</h4>
+                                <span id="marco-status">Castellano / Profesional y Seguro</span>
+                            </div>
+                            <div class="v-waves"><span></span><span></span><span></span></div>
+                            <div class="stop-audio" id="marco-stop" onclick="stopCurrentVoice(event, 'marco')">✕</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <h2 class="section-title">ELIGE TU PLAN</h2>
+                <p class="section-subtitle-pricing">Durante la Beta, todos los planes están disponibles de forma
+                    gratuita.</p>
+                <div class="pricing-grid">
+                    <!-- STANDARD -->
+                    <div class="pricing-card glass">
+                        <div class="pricing-header">
+                            <h3>ESTÁNDAR</h3>
+                            <div class="price">GRATIS</div>
+                            <div class="beta-notice">Beta: ACCESO LIBRE</div>
+                        </div>
+                        <div class="divider"></div>
+                        <ul class="pricing-features">
+                            <li><span class="check">✔</span> <strong>Estado de Vuelo:</strong> Seguimiento de retrasos y
+                                cancelaciones en tiempo real.</li>
+                            <li><span class="check">✔</span> <strong>Alertas al Móvil:</strong> Avisos inmediatos sobre
+                                cambios de puerta o itinerario.</li>
+                            <li><span class="check">✔</span> <strong>Acceso sin Conexión:</strong> Tus billetes y
+                                documentos siempre disponibles sin WiFi.</li>
+                            <li><span class="check">✔</span> <strong>Gestor de Viajes:</strong> Todos tus trayectos
+                                organizados en un solo lugar.</li>
+                            <li><span class="check">✔</span> <strong>Compensación Legal:</strong> Inicia tu reclamación
+                                EU261 con un solo toque.</li>
+                        </ul>
+                        <div class="divider"></div>
+                        <a href="#beta-form" class="hero-cta-btn plan-btn">EMPEZAR GRATIS</a>
+                    </div>
+
+                    <!-- VIP -->
+                    <div class="pricing-card glass highlighted">
+                        <span class="popular-badge">💎 ACCESO EXCLUSIVO</span>
+                        <div class="pricing-header">
+                            <h3>VIP</h3>
+                            <div class="price">7,99€ / mes <span
+                                    style="font-size: 0.9rem; color: #AAA; margin-left:10px;">o 59,99€ / año</span>
+                            </div>
+                            <div class="price-annual"><span class="save-badge">Ahorra 2 meses</span></div>
+                            <div class="beta-free-highlight">FASE BETA: GRATIS</div>
+                        </div>
+                        <div class="divider"></div>
+                        <ul class="pricing-features">
+                            <li class="elite-plus"><span class="check">✔</span> <strong>Todo lo del plan Estándar,
+                                    más:</strong></li>
+                            <li class="key-feature"><span class="check">✔</span> <strong>Asistencia prioritaria ante
+                                    incidencias:</strong> Travel-Pilot analiza lo que ocurre y te propone en segundos la
+                                mejor respuesta disponible para tu viaje.</li>
+                            <li><span class="check">✔</span> <strong>Alternativas inteligentes en tiempo real:</strong>
+                                hotel, nuevo vuelo, conexión terrestre, sala VIP u otras opciones según el contexto.
+                            </li>
+                            <li><span class="check">✔</span> <strong>Anticipación y continuidad del viaje:</strong>
+                                avisos y asistencia rápida para reducir fricción y proteger tu agenda.</li>
+                            <li><span class="check">✔</span> <strong>Acceso sin conexión a recursos clave:</strong>
+                                documentación e instrucciones esenciales disponibles cuando más las necesitas.</li>
+                            <li><span class="check">✔</span> <strong>Pensado para viajeros frecuentes, profesionales y
+                                    equipos:</strong> una capa premium de asistencia para quienes no pueden permitirirse
+                                improvisar.</li>
+                        </ul>
+
+                        <div class="modalidades-vip">
+                            <div class="mod-item">
+                                <div class="mod-price">12,99 €/mes</div>
+                                <div class="mod-price-annual">o 119 €/año</div>
+                                <strong>VIP Frecuente</strong>
+                                <span>Para quien viaja regularmente.</span>
+                            </div>
+                            <div class="mod-item">
+                                <div class="mod-price">24,99 €/mes</div>
+                                <div class="mod-price-annual">o 229 €/año</div>
+                                <strong>VIP Ejecutivo</strong>
+                                <span>Para agendas sensibles y desplazamientos clave.</span>
+                            </div>
+                            <div class="mod-item">
+                                <div class="mod-price">Desde 59 €/mes</div>
+                                <div class="mod-price-annual">&nbsp;</div>
+                                <strong>VIP Empresas</strong>
+                                <span>Para equipos y gestión corporativa.</span>
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+                        <a href="#beta-form" class="hero-cta-btn plan-btn">SOLICITAR ACCESO VIP</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <h2 class="section-title">PREGUNTAS FRECUENTES</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <h3>¿Es gratuito durante la Beta?</h3>
+                        <p>Sí. Durante la fase Beta todos los planes son completamente gratuitos. Cuando lancemos
+                            oficialmente, los usuarios Beta mantendrán su plan sin coste durante 3 meses adicionales.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>¿Funciona sin conexión a internet?</h3>
+                        <p>Tus documentos y el itinerario descargado están disponibles sin wifi. El monitoreo en tiempo
+                            real y las reclamaciones automáticas requieren conexión a internet.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>¿Qué aerolíneas y países cubre?</h3>
+                        <p>Travel-Pilot monitoriza vuelos comerciales internacionales y amplía progresivamente su
+                            cobertura operativa y sus automatizaciones según mercado y proveedor. La gestión de
+                            compensaciones está especialmente orientada a marcos como EU261/2004 y otros supuestos
+                            internacionales donde puede aportar más valor.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>¿Cómo gestiona Travel-Pilot mis datos personales?</h3>
+                        <p>Protegemos tu información con medidas de seguridad y privacidad alineadas con buenas
+                            prácticas del sector. Además, estamos construyendo la plataforma conforme a los requisitos
+                            aplicables de protección de datos, con especial atención al marco europeo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 TRAVEL-PILOT &nbsp;·&nbsp;
+                <a href="javascript:void(0)" onclick="openModal('privacy')">Política de Privacidad</a> &nbsp;·&nbsp;
+                <a href="javascript:void(0)" onclick="openModal('terms')">Términos de Uso</a> &nbsp;·&nbsp;
+                <a href="javascript:void(0)" onclick="openModal('contact')">Contacto</a>
+            </p>
+            <p class="beta-disclaimer">ACCESO BETA RESTRINGIDO — SISTEMA DE ASISTENCIA INTELIGENTE v1.0</p>
+        </div>
+    </footer>
+
+    <!-- MODAL INFRASTRUCTURE -->
+    <div id="modal-overlay" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div id="modal-content">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURACIÓN TÁCTICA
+        const FORMSPARK_ACTION_URL = "https://submit-form.com/sbubR96H7";
+        const SB_URL = "https://bmhrkootluunvoscnwdu.supabase.co";
+        // NOTA: Para producción, esta key debe ser la anon_public de tu panel de Supabase
+        const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJtaHJrb290bHV1bnZvc2Nud2R1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxMjU4NDcsImV4cCI6MjA4NzcwMTg0N30.BS0MKtyAq3Tooc28y_t3OnEWJ9KxTEMoewoM0epw-30';
+
+        // --- MODAL SYSTEM ---
+        const modalData = {
+            privacy: {
+                title: 'POLÍTICA DE PRIVACIDAD',
+                text: 'En Travel-Pilot tratamos tu privacidad como una prioridad de máxima categoría. Todos los datos de viaje y personales se procesan bajo el estándar EU-GDPR. No compartimos información con socios comerciales ni terceros sin tu consentimiento explícito y solo los utilizamos para ofrecerte asistencia en tiempo real.'
+            },
+            terms: {
+                title: 'TÉRMINOS DE USO',
+                text: 'El uso de la plataforma Travel-Pilot durante su fase beta es gratuito y está sujeto a disponibilidad tecnológica. Las gestiones de compensación por retrasos o cancelaciones se rigen por la normativa EU261. El usuario acepta que algunas funciones de automatización premium se están activando de forma progresiva.'
+            },
+            contact: {
+                title: 'CANAL DE CONTACTO PRIORITARIO',
+                text: 'Para cualquier consulta, informe de errores o sugerencia durante la fase beta, puedes contactar con nuestro equipo de soporte especializado en <strong style="color:var(--gold);">lastablasesmeralda@gmail.com</strong>. El tiempo estimado de respuesta para usuarios Beta Elite es inferior a 12 horas.'
+            }
+        };
+
+        function openModal(type) {
+            const content = modalData[type];
+            if (!content) return;
+            
+            document.getElementById('modal-content').innerHTML = `
+                <div class="modal-header">
+                    <h2>${content.title}</h2>
+                    <button class="modal-close-x" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>${content.text}</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-close-btn" onclick="closeModal()">CERRAR VENTANA</button>
+                </div>
+            `;
+            document.getElementById('modal-overlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal-overlay').classList.remove('active');
+        }
+
+        // --- SUPABASE & BETA COUNTER ---
+        const _supabase = supabase.createClient(SB_URL, SB_KEY);
+        const BASE_COUNT = 23; // Número inicial marcado
+
+        let currentAssistant = 'clara';
+        let currentAudio = null;
+
+        // Función para actualizar el contador real
+        async function refreshCounter() {
+            try {
+                // Contamos filas en la tabla 'users' o la que elijas para beta
+                const { count, error } = await _supabase
+                    .from('beta_signups')
+                    .select('*', { count: 'exact', head: true });
+
+                if (!error) {
+                    const total = BASE_COUNT + (count || 0);
+                    const formatted = total.toLocaleString();
+                    document.getElementById('global-counter').innerText = formatted;
+                    if (document.getElementById('footer-counter')) {
+                        document.getElementById('footer-counter').innerText = formatted;
+                    }
+                }
+            } catch (e) {
+                console.error("Error cargando contador:", e);
+                document.getElementById('global-counter').innerText = BASE_COUNT.toLocaleString();
+            }
+        }
+
+        // Cargar al inicio
+        window.onload = () => {
+            // Mostrar valor base inmediatamente para evitar el '--'
+            document.getElementById('global-counter').innerText = BASE_COUNT.toLocaleString();
+            refreshCounter();
+            window.speechSynthesis.getVoices();
+        };
+
+        function stopAudio() {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+        }
+
+        function startSimulation() {
+            document.getElementById('trigger-btn').style.display = 'none';
+            document.getElementById('scanning-ui').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('scanning-ui').style.display = 'none';
+                const plans = document.getElementById('plans-ui');
+                plans.style.display = 'grid';
+                setTimeout(() => plans.classList.add('active'), 50);
+            }, 3000);
+        }
+
+        function selectPlan(plan) {
+            stopAudio();
+            document.getElementById('plans-ui').style.display = 'none';
+            const response = document.getElementById('sim-response');
+            const iaName = document.querySelector('.ia-name');
+            const iaText = document.getElementById('ia-text');
+
+            response.style.display = 'flex';
+            iaName.innerText = `ASISTENTE ${currentAssistant.toUpperCase()}`;
+
+            // Audio Real (Ej: assets/clara_economico.mp3)
+            const audioSrc = `./assets/${currentAssistant.toLowerCase()}_${plan.toLowerCase()}.mp3`;
+            currentAudio = new Audio(audioSrc);
+            currentAudio.load();
+            currentAudio.play().catch(e => {
+                console.log("Audio falló, mostrando texto igualmente:", e);
+            });
+
+            // Texto de apoyo visual (Sincronizado con audios reales)
+            if (plan === 'ECONOMICO') {
+                iaText.innerText = "Entendido. Tu expediente de reclamación EU261 está listo para firmar. Sin formularios, sin llamadas. Un toque y el proceso legal empieza solo.";
+            } else if (plan === 'RAPIDO') {
+                iaText.innerText = "Acción inmediata. He identificado la alternativa más rápida disponible para llegar hoy a tu destino. El plan está listo. ¿Lo ejecutamos?";
+            } else {
+                iaText.innerText = "Perfecto. He analizado tu situación y tengo tres opciones preparadas. La más equilibrada entre tiempo y dinero ya está destacada. Dime si la activo.";
+            }
+        }
+
+        function resetSimulation() {
+            stopAudio();
+            document.getElementById('sim-response').style.display = 'none';
+            document.getElementById('plans-ui').classList.remove('active');
+            document.getElementById('trigger-btn').style.display = 'block';
+        }
+
+        function playVoice(name) {
+            // Detener cualquier sonido previo
+            stopAudio();
+            currentAssistant = name.toLowerCase();
+
+            const statusId = currentAssistant + '-status';
+            const stopId = currentAssistant + '-stop';
+            const originalText = name === 'Clara' ? 'Castellano / Inteligente' : 'Castellano / Profesional y Seguro';
+            const status = document.getElementById(statusId);
+            const stopBtn = document.getElementById(stopId);
+
+            status.innerText = "Asistente hablando...";
+            status.style.color = "#AF52DE";
+            if (stopBtn) stopBtn.style.display = 'block';
+
+            currentAudio = new Audio(`./assets/${currentAssistant.toLowerCase()}_intro.mp3`);
+            currentAudio.load();
+            currentAudio.play().catch(e => console.log("Error al reproducir audio intro:", e));
+
+            currentAudio.onended = () => {
+                status.innerText = originalText;
+                status.style.color = "#888";
+                if (stopBtn) stopBtn.style.display = 'none';
+            };
+        }
+
+        function stopCurrentVoice(event, name) {
+            if (event) event.stopPropagation(); // IMPORTANTE: No activar el onclick del padre
+            stopAudio();
+            const statusId = name + '-status';
+            const stopId = name + '-stop';
+            const originalText = name === 'clara' ? 'Castellano / Inteligente' : 'Castellano / Profesional y Seguro';
+
+            document.getElementById(statusId).innerText = originalText;
+            document.getElementById(statusId).style.color = "#888";
+            document.getElementById(stopId).style.display = 'none';
+        }
+
+        // Precargar voces (algunos navegadores las cargan tarde)
+        window.speechSynthesis.getVoices();
+
+        async function registerBeta(inputId) {
+            const emailInput = document.getElementById(inputId);
+            const typeInput = document.getElementById('hero-type');
+            const goalInput = document.getElementById('hero-goal');
+            const status = document.getElementById(inputId + '-status');
+            const btn = emailInput.nextElementSibling;
+
+            if (!emailInput.value || !emailInput.value.includes('@')) {
+                status.innerText = 'ERROR: CORREO INVÁLIDO';
+                status.style.color = '#ff4b2b';
+                return;
+            }
+
+            btn.innerText = 'PROCESANDO...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(FORMSPARK_ACTION_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    },
+                    body: JSON.stringify({
+                        email: emailInput.value,
+                        traveler_type: typeInput ? typeInput.value : 'N/A',
+                        goal: goalInput ? goalInput.value : 'N/A'
+                    }),
+                });
+
+                if (response.ok) {
+                    // Intentar guardar también en Supabase para el contador real
+                    try {
+                        const { error } = await _supabase.from('beta_signups').insert([{
+                            email: emailInput.value,
+                            name: 'Beta User',
+                            metadata: {
+                                traveler_type: typeInput ? typeInput.value : 'N/A',
+                                goal: goalInput ? goalInput.value : 'N/A'
+                            }
+                        }]);
+                        refreshCounter(); // Actualizar contador tras registro
+                    } catch (e) { console.log("DB Sync fallback"); }
+
+                    status.innerText = 'ÉXITO: REGISTRO COMPLETADO. REVISE SU EMAIL PRÓXIMAMENTE.';
+                    status.style.color = '#27ae60';
+                    btn.innerText = 'REGISTRADO';
+                    btn.classList.add('success');
+                    emailInput.value = ''; // Limpiar el campo tras el éxito
+                } else {
+                    const errorData = await response.json().catch(() => ({}));
+                    status.innerText = `ERROR_SERVIDOR: STATUS_${response.status} [${errorData.message || 'DESCONOCIDO'}]`;
+                    status.style.color = '#e74c3c';
+                    btn.disabled = false;
+                    input.disabled = false;
+                }
+
+            } catch (error) {
+                status.innerText = 'ERROR_RED: FALLO DE CONEXIÓN TÁCTICA.';
+                status.style.color = '#e74c3c';
+                btn.disabled = false;
+                input.disabled = false;
+                console.error("DEBUG_INFO:", error);
+            }
+        }
+    </script>
+</body>
+
+</html>
