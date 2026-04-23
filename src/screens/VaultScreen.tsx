@@ -642,7 +642,11 @@ export default function VaultScreen() {
                             <TouchableOpacity onPress={() => setShowActionModal(false)} style={{ marginTop: 20, alignItems: 'center' }}>
                                 <Text style={{ color: '#555', fontSize: 10 }}>CLOSE WINDOW</Text>
                             </TouchableOpacity>
-                 {/* KNOW YOUR RIGHTS MODAL (GLOBAL PROTOCOL) */}
+                        </View>
+                    </View>
+                </Modal>
+
+                {/* KNOW YOUR RIGHTS MODAL (GLOBAL PROTOCOL) */}
                 <Modal visible={showRights} animationType="slide" transparent>
                     <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.98)', paddingTop: 60 }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 25, marginBottom: 20 }}>
