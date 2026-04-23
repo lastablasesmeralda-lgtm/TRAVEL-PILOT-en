@@ -214,7 +214,7 @@ export default function BioScreen() {
                                 const isLocked = v.isPremium && travelProfile !== 'premium';
                                 return (
                                     <TouchableOpacity
-                                        key={v.identifier || i}
+                                        key={`${v.identifier}-${i}`}
                                         style={[
                                             s.voiceBtn,
                                             selectedVoice === v.identifier && s.voiceBtnSelected,
