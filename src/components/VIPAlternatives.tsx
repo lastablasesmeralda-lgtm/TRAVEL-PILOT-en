@@ -162,14 +162,14 @@ export default function VIPAlternatives({
                                 setTimeout(() => onOpenChat(), 400);
                             }}
                             style={{ backgroundColor: 'rgba(175,82,222,0.15)', padding: 16, borderRadius: 14, alignItems: 'center', borderWidth: 1, borderColor: '#AF52DE', marginBottom: 20 }}>
-                            <Text style={{ color: '#AF52DE', fontWeight: '900', fontSize: 14 }}>💬 ABRIR ASISTENTE DURANTE LA LLAMADA</Text>
+                            <Text style={{ color: '#AF52DE', fontWeight: '900', fontSize: 14 }}>💬 OPEN ASSISTANT DURING CALL</Text>
                         </TouchableOpacity>
 
                         {/* SECCIÓN TREN / TIERRA */}
                         <View style={{ marginTop: 10, paddingTop: 20, borderTopWidth: 1, borderTopColor: '#1A1A1A' }}>
                             <Text style={{ color: '#D4AF37', fontSize: 10, fontWeight: '900', letterSpacing: 1.5, marginBottom: 8 }}>🚢 OTRAS VÍAS DE TRAYECTO</Text>
                             <Text style={{ color: '#666', fontSize: 11, lineHeight: 17, marginBottom: 16 }}>
-                                Si prefieres continuar tu viaje por tierra, tu asistente puede localizar la mejor combinación en Tren de Alta Velocidad o Transfer privado para llegar a {arrIata}.
+                                If you prefer to continue your journey by land, your assistant can locate the best combination on High-Speed Train or private Transfer to reach {arrIata}.
                             </Text>
                             <TouchableOpacity
                                 onPress={() => {
@@ -212,7 +212,7 @@ export default function VIPAlternatives({
                         <View style={{ backgroundColor: '#0A0A0A', borderRadius: 14, padding: 16, marginBottom: 20 }}>
                             {[
                                 { label: 'FLIGHT', value: flightData?.flightNumber || flightData?.flight?.iata || '—' },
-                                { label: 'AEROLÍNEA', value: airline },
+                                { label: 'AIRLINE', value: airline },
                                 { label: 'RUTA', value: `${depIata} → ${arrIata}` },
                                 { label: 'DELAY', value: `${flightData?.departure?.delay || 185} min` },
                                 { label: 'COMPENSACIÓN', value: getEU261Amount(flightData) },
@@ -226,7 +226,7 @@ export default function VIPAlternatives({
                         </View>
 
                         <View style={{ backgroundColor: 'rgba(76,217,100,0.06)', padding: 14, borderRadius: 12, borderWidth: 0.5, borderColor: 'rgba(76,217,100,0.2)', marginBottom: 20 }}>
-                            <Text style={{ color: '#4CD964', fontSize: 11, fontWeight: '800', marginBottom: 6 }}>Informe legal preparado:</Text>
+                            <Text style={{ color: '#4CD964', fontSize: 11, fontWeight: '800', marginBottom: 6 }}>Legal report prepared:</Text>
                             <Text style={{ color: '#999', fontSize: 11, lineHeight: 17 }}>
                                 Dear {airline}. Following the incident detected on flight {flightData?.flightNumber || flightData?.flight?.iata || '—'} between {depIata} and {arrIata}, with a verified delay of more than 3 hours, we proceed to formalize the compensation request in accordance with Regulation (EC) 261/2004. As a passenger with the right to assistance, I attach the details collected by FlightPilot for your immediate processing.
                             </Text>
@@ -275,7 +275,7 @@ export default function VIPAlternatives({
                         {[
                             { icon: '🛋️', title: 'Acceso a Salas VIP', desc: 'Sigue las señales hacia "Sala VIP" en tu terminal. Tienes derecho a solicitar acceso prioritario por incidencia prolongada.' },
                             { icon: '🚿', title: 'Áreas de Descanso', desc: 'Zonas silenciosas con duchas y camas disponibles para esperas superiores a 4 horas.' },
-                            { icon: '☕', title: 'Catering Premium', desc: 'Comida y bebida ilimitada incluida en las áreas de cortesía para socios.' },
+                            { icon: '☕', title: 'Premium Catering', desc: 'Unlimited food and drink included in the member courtesy areas.' },
                         ].map((item, idx) => (
                             <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 16, backgroundColor: '#0A0A0A', padding: 14, borderRadius: 12 }}>
                                 <Text style={{ fontSize: 20, marginRight: 12, marginTop: 2 }}>{item.icon}</Text>
@@ -294,7 +294,7 @@ export default function VIPAlternatives({
                                 setTimeout(() => onOpenChat(), 400);
                             }}
                             style={{ backgroundColor: 'rgba(175,82,222,0.15)', padding: 14, borderRadius: 12, alignItems: 'center', borderWidth: 1, borderColor: '#AF52DE', marginTop: 10 }}>
-                            <Text style={{ color: '#AF52DE', fontWeight: '900', fontSize: 13 }}>📍 PEDIR UBICACIÓN EXACTA AL ASISTENTE</Text>
+                            <Text style={{ color: '#AF52DE', fontWeight: '900', fontSize: 13 }}>📍 REQUEST EXACT LOCATION FROM ASSISTANT</Text>
                         </TouchableOpacity>
                     </ScrollView>
 
@@ -314,20 +314,20 @@ export default function VIPAlternatives({
                     <View style={{ backgroundColor: '#111', paddingTop: 40, paddingBottom: 25, paddingHorizontal: 25, borderBottomWidth: 1, borderBottomColor: '#333', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                         <View>
                             <Text style={{ color: '#5AC8FA', fontSize: 10, fontWeight: '900', letterSpacing: 2, marginBottom: 6 }}>🛡️ COBERTURA TOTAL</Text>
-                            <Text style={{ color: '#FFF', fontSize: 22, fontWeight: '900' }}>Derechos de asistencia</Text>
+                            <Text style={{ color: '#FFF', fontSize: 22, fontWeight: '900' }}>Assistance rights</Text>
                         </View>
                         <TouchableOpacity onPress={travelProfile === 'standard' ? handleClose : () => setDetailView(null)} style={{ padding: 10 }}>
                             <Text style={{ color: '#5AC8FA', fontSize: 16 }}>✕</Text>
                         </TouchableOpacity>
                     </View>
                     <ScrollView style={{ maxHeight: 580 }} contentContainerStyle={{ padding: 25 }} showsVerticalScrollIndicator={true} indicatorStyle="white" persistentScrollbar={true}>
-                        <Text style={{ color: '#FFF', fontSize: 15, fontWeight: '800', marginBottom: 14 }}>Tus derechos mientras esperas</Text>
+                        <Text style={{ color: '#FFF', fontSize: 15, fontWeight: '800', marginBottom: 14 }}>Your rights while waiting</Text>
                         <Text style={{ color: '#888', fontSize: 13, lineHeight: 20, marginBottom: 20 }}>
                             If you prefer to wait for your original flight to operate, your rights are still protected. The airline is obliged to cover the following:
                         </Text>
 
                         {[
-                            { icon: '🍽️', title: 'Comida y bebida', desc: 'Proporcionada por la aerolínea durante la espera.' },
+                            { icon: '🍽️', title: 'Food and drink', desc: 'Provided by the airline during the wait.' },
                             { icon: '📱', title: 'Comunicaciones', desc: 'Acceso a llamadas, email o fax (2 usos mínimo).' },
                             { icon: '🏨', title: 'Hotel si es necesario', desc: 'Si la espera requiere pernocta, hotel + traslado incluido.' },
                             { icon: '💶', title: 'Financial compensation', desc: 'Your EU261 claim remains active and independent.' },
@@ -371,12 +371,12 @@ export default function VIPAlternatives({
                     <View style={{ paddingTop: 85, paddingHorizontal: 24, paddingBottom: 20, borderBottomWidth: 1, borderBottomColor: 'rgba(212,175,55,0.12)' }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                             <View style={{ flex: 1, marginRight: 15 }}>
-                                <Text style={{ color: '#D4AF37', fontSize: 10, fontWeight: '900', letterSpacing: 2, marginBottom: 8 }}>💎 TU ASISTENTE PERSONAL</Text>
-                                <Text style={{ color: '#FFF', fontSize: 22, fontWeight: '900', letterSpacing: 0.3 }}>{isMajorIssue ? 'TUS OPCIONES VIP' : 'TU PROTOCOLO DE CORTESÍA'}</Text>
+                                <Text style={{ color: '#D4AF37', fontSize: 10, fontWeight: '900', letterSpacing: 2, marginBottom: 8 }}>💎 YOUR PERSONAL ASSISTANT</Text>
+                                <Text style={{ color: '#FFF', fontSize: 22, fontWeight: '900', letterSpacing: 0.3 }}>{isMajorIssue ? 'YOUR VIP OPTIONS' : 'YOUR COURTESY PROTOCOL'}</Text>
                                 <Text style={{ color: '#777', fontSize: 12, marginTop: 10, lineHeight: 18 }}>
                                     {isMajorIssue 
                                         ? 'Hemos seleccionado lo mejor para tu situación. Elige la opción que más te convenga.' 
-                                        : 'Esta incidencia es leve. Hemos activado tus privilegios para que esperes con total comodidad.'}
+                                        : 'This incident is minor. We have activated your privileges so you can wait in total comfort.'}
                                 </Text>
                             </View>
                             <TouchableOpacity onPress={handleClose} style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: '#1A1A1A', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#333' }}>
@@ -494,7 +494,7 @@ export default function VIPAlternatives({
                                             <Text style={{ color: '#FFF', fontSize: 16, fontWeight: '800', flex: 1 }}>Reservar Alojamiento de Urgencia</Text>
                                         </View>
                                         <Text style={{ color: '#888', fontSize: 12, lineHeight: 18, marginBottom: 14, marginLeft: 52 }}>
-                                            Las aerolíneas tardan horas en dar alojamiento. Reserva ahora y usa tu recibo para exigir el reembolso en tu reclamación.
+                                            Airlines take hours to provide accommodation. Book now and use your receipt to demand a refund in your claim.
                                         </Text>
                                         <View style={{ marginLeft: 52 }}>
                                             <View style={{ backgroundColor: 'rgba(0,122,255,0.12)', paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8, alignSelf: 'flex-start' }}>
@@ -513,14 +513,14 @@ export default function VIPAlternatives({
                                         <View style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: 'rgba(90,200,250,0.1)', justifyContent: 'center', alignItems: 'center', marginRight: 12 }}>
                                             <Text style={{ fontSize: 20 }}>ℹ️</Text>
                                         </View>
-                                        <Text style={{ color: '#FFF', fontSize: 16, fontWeight: '800', flex: 1 }}>Asistencia y Cobertura</Text>
+                                        <Text style={{ color: '#FFF', fontSize: 16, fontWeight: '800', flex: 1 }}>Assistance and Coverage</Text>
                                     </View>
                                     <Text style={{ color: '#888', fontSize: 12, lineHeight: 18, marginBottom: 14, marginLeft: 52 }}>
                                         Discover your food and accommodation rights guaranteed by law.
                                     </Text>
                                     <View style={{ marginLeft: 52 }}>
                                         <View style={{ backgroundColor: 'rgba(90,200,250,0.12)', paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8, alignSelf: 'flex-start' }}>
-                                            <Text style={{ color: '#5AC8FA', fontSize: 11, fontWeight: '900', letterSpacing: 0.5 }}>VER DERECHOS →</Text>
+                                            <Text style={{ color: '#5AC8FA', fontSize: 11, fontWeight: '900', letterSpacing: 0.5 }}>VIEW RIGHTS →</Text>
                                         </View>
                                     </View>
                                 </TouchableOpacity>
@@ -529,7 +529,7 @@ export default function VIPAlternatives({
                             <View style={{ padding: 40, alignItems: 'center', marginTop: 40 }}>
                                 <View style={{ padding: 25, borderRadius: 20, backgroundColor: '#0A0A0A', borderStyle: 'dotted', borderWidth: 1, borderColor: '#333' }}>
                                     <Text style={{ color: '#555', textAlign: 'center', fontSize: 13, lineHeight: 22 }}>
-                                        Este canal de asistencia experta está gestionado por inteligencia humana Elite. Pulsa en la equis para regresar a tu panel general.
+                                        This expert assistance channel is managed by Elite human intelligence. Click the X to return to your general panel.
                                     </Text>
                                 </View>
                             </View>

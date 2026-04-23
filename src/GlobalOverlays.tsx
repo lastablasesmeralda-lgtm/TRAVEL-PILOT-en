@@ -109,8 +109,8 @@ export default function GlobalOverlays() {
         if (showBrowser && !isFinished) {
             timer = setTimeout(() => {
                 const recoveryMsg = isExtracting
-                    ? "✅ Protocolo completado (Sincronización segura finalizada)."
-                    : "✅ Protocolo finalizado (Plan de contingencia desplegado).";
+                    ? "✅ Protocol completed (Secure synchronization finalized)."
+                    : "✅ Protocol finalized (Contingency plan deployed).";
 
                 setBrowserLogs((prev: string[]) => [
                     ...prev,
@@ -158,8 +158,8 @@ export default function GlobalOverlays() {
                 // BYPASS MODO ESTÁNDAR PARA RETRASOS LEVES:
                 const mockAssistancePlan = {
                     type: 'ECONÓMICO',
-                    title: 'SOLICITUD DE ASISTENCIA EU261',
-                    description: 'Documento legal para reclamar vales de manutención y asistencia en tierra.',
+                    title: 'EU261 ASSISTANCE REQUEST',
+                    description: 'Legal document to claim food vouchers and ground assistance.',
                     actionType: 'assistance',
                     voiceScriptFinal: 'Sixty minute delay detected. I have generated your legal assistance certificate. Show it at the counter for your food vouchers. Your PDF is ready in your documents section.'
                 };
@@ -175,9 +175,9 @@ export default function GlobalOverlays() {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({
-                                passengerName: userFullName || user?.displayName || 'Pasajero Travel-Pilot',
+                                passengerName: userFullName || user?.displayName || 'Travel-Pilot Passenger',
                                 flightNumber: flightNum,
-                                airline: flightData?.airline || 'Aerolínea',
+                                airline: flightData?.airline || 'Airline',
                                 departureAirport: flightData?.departure?.iata || 'AEP',
                                 arrivalAirport: flightData?.arrival?.iata || 'DEST',
                                 delayMinutes: (flightData?.departure?.delay || 0),
@@ -194,7 +194,7 @@ export default function GlobalOverlays() {
                             setExtraDocs((prev: any[]) => [
                                 {
                                     id: `asist_pdf_${Date.now()}`,
-                                    t: 'CERTIFICADO DE ASISTENCIA EU261',
+                                    t: 'EU261 ASSISTANCE CERTIFICATE',
                                     s: `PDF Document // Flight ${flightNum}`,
                                     i: fileUri,
                                     source: 'SYSTEM',
@@ -220,7 +220,7 @@ export default function GlobalOverlays() {
     // DICTADO INICIAL DEL PLAN DE CRISIS DINÁMICO
     React.useEffect(() => {
         if (showSOS && apiPlan && !isGenerating && apiPlan.voiceScriptInitial) {
-            speak(apiPlan.voiceScriptInitial, selectedPlan ? undefined : 'es-ES-standard');
+            speak(apiPlan.voiceScriptInitial, selectedPlan ? undefined : 'en-US-standard');
         }
     }, [showSOS, isGenerating, apiPlan]);
 
@@ -434,7 +434,7 @@ export default function GlobalOverlays() {
                         {/* CABECERA CON BOTÓN DE CIERRE */}
                         <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 20, borderBottomWidth: 1, borderBottomColor: '#222' }}>
                             <Text style={[s.mt, { fontSize: 16, letterSpacing: 1 }]}>
-                                {travelProfile === 'premium' ? 'PROTOCOLO DE RESCATE VIP' : 'RESOLUCIÓN DE CRISIS'}
+                                {travelProfile === 'premium' ? 'VIP RESCUE PROTOCOL' : 'CRISIS RESOLUTION'}
                             </Text>
                             <TouchableOpacity onPress={() => { stopSpeak(); setShowSOS(false); setSelectedPlan(null); setShowAllOptions(false); }} style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: '#222', justifyContent: 'center', alignItems: 'center' }}>
                                 <Text style={{ color: '#AF52DE', fontSize: 18, fontWeight: 'bold' }}>✕</Text>
@@ -448,7 +448,7 @@ export default function GlobalOverlays() {
                                     <Text style={{ color: '#AF52DE', marginTop: 15, fontWeight: 'bold', fontSize: 13 }}>
                                         {loadingStep === 0 && "CONNECTING WITH ASSISTANT..."}
                                         {loadingStep === 1 && "EVALUANDO IMPACTO EN VIAJE..."}
-                                        {loadingStep === 2 && "PREPARANDO PROPUESTAS..."}
+                                        {loadingStep === 2 && "PREPARING PROPOSALS..."}
                                         {loadingStep === 3 && "GENERANDO ORIENTACIÓN..."}
                                     </Text>
                                 </View>
@@ -493,7 +493,7 @@ export default function GlobalOverlays() {
                                                 if (opt.type?.includes('RÁPID') || opt.type?.includes('RAPID')) {
                                                     borderColor = '#FF3B30';
                                                     icon = '🚀';
-                                                    typeLabel = travelProfile === 'premium' ? 'PROTOCOLO JET' : 'OPCIÓN RÁPIDA';
+                                                    typeLabel = travelProfile === 'premium' ? 'JET PROTOCOL' : 'FAST OPTION';
                                                     isSpecial = true;
                                                 } else if (opt.type?.includes('ECONÓMIC') || opt.type?.includes('BARAT')) {
                                                     borderColor = '#34C759';
@@ -513,7 +513,7 @@ export default function GlobalOverlays() {
                                                 if (isMain && (travelProfile === 'premium' || travelProfile === 'fast')) {
                                                     borderColor = travelProfile === 'premium' ? '#D4AF37' : '#FF3B30';
                                                     icon = travelProfile === 'premium' ? '💎' : '🔥';
-                                                    typeLabel = travelProfile === 'premium' ? 'ASISTENCIA INTEGRAL TRAVEL-PILOT' : 'RESCATE PRIORITARIO';
+                                                    typeLabel = travelProfile === 'premium' ? 'TRAVEL-PILOT FULL ASSISTANCE' : 'PRIORITY RESCUE';
                                                     isSpecial = true;
                                                 }
 
@@ -536,7 +536,7 @@ export default function GlobalOverlays() {
                                                         }}
                                                         onPress={() => {
                                                             if (opt.actionType === 'locked') {
-                                                                speak('Estas opciones son exclusivas del plan VIP. Actívalo ahora y tendrás acceso inmediato a todas las estrategias de rescate.');
+                                                                speak('These options are exclusive to the VIP plan. Activate it now and you will have immediate access to all rescue strategies.');
                                                                 setShowSOS(false);
                                                                 setPendingVIPRedirect(true);
                                                                 return;
@@ -609,7 +609,7 @@ export default function GlobalOverlays() {
                                                                 ? `I have verified the cancellation of flight ${flightData?.flightNumber}. `
                                                                 : `Confirmed ${flightData?.departure?.delay || 0} min delay on your flight. `
                                                             }
-                                                            Basado en tu perfil de <Text style={{ color: '#D4AF37', fontWeight: '900' }}>{travelProfile === 'premium' ? 'ÉLITE VIP' : travelProfile === 'fast' ? 'TIEMPO PRIORITARIO' : 'CONTROL DE GASTOS'}</Text>, he diseñado esta estrategia maestra:
+                                                            Based on your <Text style={{ color: '#D4AF37', fontWeight: '900' }}>{travelProfile === 'premium' ? 'VIP ELITE' : travelProfile === 'fast' ? 'PRIORITY TIME' : 'COST CONTROL'}</Text> profile, I have designed this master strategy:
                                                         </Text>
                                                     </View>
 
@@ -621,13 +621,13 @@ export default function GlobalOverlays() {
                                                             onPress={() => setShowAllOptions(true)}
                                                             style={{ padding: 15, alignItems: 'center', marginTop: 10, borderWidth: 1, borderColor: '#333', borderRadius: 12, borderStyle: 'dotted' }}
                                                         >
-                                                            <Text style={{ color: '#888', fontWeight: 'bold', fontSize: 11 }}>SOLICITAR CAMBIO DE ESTRATEGIA (VER OTROS PLANES)</Text>
+                                                            <Text style={{ color: '#888', fontWeight: 'bold', fontSize: 11 }}>REQUEST STRATEGY CHANGE (VIEW OTHER PLANS)</Text>
                                                         </TouchableOpacity>
                                                     )}
 
                                                     {(showAllOptions || (travelProfile !== 'premium' && otherOpts.length > 0)) && (
                                                         <View style={{ marginTop: 20 }}>
-                                                            {travelProfile === 'premium' && <Text style={{ color: '#666', fontSize: 11, fontWeight: 'bold', marginBottom: 15, textAlign: 'center' }}>VÍAS ALTERNATIVAS DISPONIBLES</Text>}
+                                                            {travelProfile === 'premium' && <Text style={{ color: '#666', fontSize: 11, fontWeight: 'bold', marginBottom: 15, textAlign: 'center' }}>AVAILABLE ALTERNATIVE ROUTES</Text>}
                                                             {otherOpts.map((opt: any, idx: number) => renderOption(opt, false, idx + 1))}
                                                         </View>
                                                     )}
@@ -707,14 +707,14 @@ export default function GlobalOverlays() {
                                             <>
                                                 <Text style={{ fontSize: 40 }}>✅</Text>
                                                 <Text style={{ color: '#27C93F', marginTop: 15, fontWeight: 'bold', fontSize: 16 }}>
-                                                    {((flightData?.delayMinutes || flightData?.departure?.delay || 0) < 120) && !flightData?.status?.includes('cancel') ? 'PROTOCOLO ACTIVADO' : 'ESTRATEGIA COMPLETADA'}
+                                                    {((flightData?.delayMinutes || flightData?.departure?.delay || 0) < 120) && !flightData?.status?.includes('cancel') ? 'PROTOCOL ACTIVATED' : 'STRATEGY COMPLETED'}
                                                 </Text>
                                                 <Text style={{ color: '#4CD964', marginTop: 5, fontSize: 13, textAlign: 'center', fontWeight: '500' }}>
                                                     {isExtracting ? 'I have finished syncing your account. I have located the document and saved it in your Vault.' :
                                                         travelProfile === 'premium' ?
                                                             (((flightData?.delayMinutes || flightData?.departure?.delay || 0) < 120) && !flightData?.status?.includes('cancel')
-                                                                ? 'Protocolo de cortesía VIP activado. Tu acceso a la Sala VIP y los servicios de asistencia están listos en la sección de documentos.'
-                                                                : 'Estrategia de rescate generada. Tu expediente legal y las opciones de reubicación están listos en la sección de documentos.')
+                                                                ? 'VIP courtesy protocol activated. Your VIP Lounge access and assistance services are ready in the documents section.'
+                                                                : 'Rescue strategy generated. Your legal file and relocation options are ready in the documents section.')
                                                             : selectedPlan?.type?.includes('ECONÓMIC') ? 'Legal documentation finalized. Your EU261 claim is ready in the documents section.' :
                                                                 'I have finished analyzing your options. You have all the information and flight plans in your documents section.'}
                                                 </Text>
@@ -765,12 +765,12 @@ export default function GlobalOverlays() {
                                             isVip
                                                 ? (isMajorIssue
                                                     ? 'Rescue strategy generated. I have prepared your claim file and relocation options. You have everything ready in your documents section.'
-                                                    : 'He activado tu protocolo de cortesía VIP. Tienes tu acceso a la Sala VIP y los servicios de asistencia listos en tu sección de documentos para una espera confortable.')
+                                                    : 'I have activated your VIP courtesy protocol. Your VIP Lounge access and assistance services are ready in your documents section for a comfortable wait.')
                                                 : isHotel
-                                                    ? 'He organizado tu plan de estancia. Tienes la información del hotel y los pasos a seguir en tu sección de documentos.'
+                                                    ? 'I have organized your stay plan. You have the hotel information and steps to follow in your documents section.'
                                                     : isEco
                                                         ? 'Legal documentation finalized. Your EU261 claim is ready in your documents section to be signed and sent.'
-                                                        : 'He terminado de analizar tus opciones. Tienes toda la información y planes de vuelo en tu sección de documentos.'
+                                                        : 'I have finished analyzing your options. You have all the flight information and plans in your documents section.'
                                         );
                                     }
 
@@ -778,7 +778,7 @@ export default function GlobalOverlays() {
                                     const newTicket = {
                                         id: `rescue_${Date.now()}`,
                                         t: isVip
-                                            ? (isMajorIssue ? `PROTOCOLO DE RESCATE PREMIUM (VIP)` : `PROTOCOLO DE CORTESÍA VIP`)
+                                            ? (isMajorIssue ? `PREMIUM RESCUE PROTOCOL (VIP)` : `VIP COURTESY PROTOCOL`)
                                             : (isHotel ? `GESTIÓN DE REUBICACIÓN Y TRASLADO` :
                                                 `PROPUESTA RESCATE IA (${isEco ? 'ECONÓMICO' : isRápido ? 'RÁPIDO' : 'EQUILIBRADO'})`),
                                         s: isVip ? (isMajorIssue ? 'Personalized Comprehensive Strategy' : 'Privileges and Comfort Activated') : (isHotel ? `Accommodation · ${selectedPlan.title}` : `Flight Proposal · ${selectedPlan.title}`),
