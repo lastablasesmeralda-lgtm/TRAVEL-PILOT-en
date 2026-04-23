@@ -226,7 +226,7 @@ export default function BioScreen() {
                                                 return;
                                             }
                                             setSelectedVoice(v.identifier);
-                                            speak('Hello, I am your intelligent travel assistant.', v.identifier);
+                                            // speak('Hello, I am your intelligent travel assistant.', v.identifier);
                                         }}
                                     >
                                         <Text style={{ color: selectedVoice === v.identifier ? '#000' : '#AF52DE', fontSize: 10, fontWeight: 'bold' }}>

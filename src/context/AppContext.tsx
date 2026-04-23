@@ -1798,7 +1798,7 @@ export const AppProvider = ({ children }) => {
   const fetchWeather = async (location: string) => {
     try {
       const sanitized = location.toLowerCase().includes('bora bora') ? 'Bora Bora, French Polynesia' : location;
-      const resp = await fetch(`${BACKEND_URL}/api/weather?location=${encodeURIComponent(sanitized)}`, {
+      const resp = await fetch(`${BACKEND_URL}/api/weather?location=${encodeURIComponent(sanitized)}&lang=en`, {
         headers: { 'ngrok-skip-browser-warning': 'true' }
       });
       if (!resp.ok) throw new Error("Backend weather failed");
