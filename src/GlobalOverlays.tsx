@@ -498,7 +498,7 @@ export default function GlobalOverlays() {
                                                 } else if (opt.type?.includes('ECONÓMIC') || opt.type?.includes('BARAT')) {
                                                     borderColor = '#34C759';
                                                     icon = '💰';
-                                                    typeLabel = travelProfile === 'premium' ? 'RECLAMACIÓN ELITE' : 'OPCIÓN ECONÓMICA';
+                                                    typeLabel = travelProfile === 'premium' ? 'ELITE CLAIM' : 'ECONOMY OPTION';
                                                 } else if (opt.type === 'VIP_LOCKED') {
                                                     borderColor = '#D4AF37';
                                                     icon = '🔒';
@@ -546,7 +546,7 @@ export default function GlobalOverlays() {
                                                             const optType = (isRápido && travelProfile === 'premium') ? 'VIP' : isRápido ? 'RÁPIDO' : isEco ? 'ECONÓMICO' : 'EQUILIBRADO';
                                                             const msg = opt.voiceScriptFinal || (travelProfile === 'premium'
                                                                 ? `De acuerdo. Me ocupo de todo personalmente. Buscando soluciones en tu destino.`
-                                                                : `Entendido. Estoy preparando toda la documentación legal para tu reclamación ahora mismo.`);
+                                                                : `Understood. I am preparing all the legal documentation for your claim right now.`);
                                                             speak(msg);
 
                                                             setSelectedRescuePlan(opt.title); // Capturamos la elección
@@ -715,7 +715,7 @@ export default function GlobalOverlays() {
                                                             (((flightData?.delayMinutes || flightData?.departure?.delay || 0) < 120) && !flightData?.status?.includes('cancel')
                                                                 ? 'Protocolo de cortesía VIP activado. Tu acceso a la Sala VIP y los servicios de asistencia están listos en la sección de documentos.'
                                                                 : 'Estrategia de rescate generada. Tu expediente legal y las opciones de reubicación están listos en la sección de documentos.')
-                                                            : selectedPlan?.type?.includes('ECONÓMIC') ? 'Documentación legal finalizada. Tu reclamación EU261 está lista en la sección de documentos.' :
+                                                            : selectedPlan?.type?.includes('ECONÓMIC') ? 'Legal documentation finalized. Your EU261 claim is ready in the documents section.' :
                                                                 'I have finished analyzing your options. You have all the information and flight plans in your documents section.'}
                                                 </Text>
                                             </>
@@ -764,12 +764,12 @@ export default function GlobalOverlays() {
                                         speak(
                                             isVip
                                                 ? (isMajorIssue
-                                                    ? 'Estrategia de rescate generada. He preparado tu expediente de reclamación y las opciones de reubicación. Tienes todo listo en tu sección de documentos.'
+                                                    ? 'Rescue strategy generated. I have prepared your claim file and relocation options. You have everything ready in your documents section.'
                                                     : 'He activado tu protocolo de cortesía VIP. Tienes tu acceso a la Sala VIP y los servicios de asistencia listos en tu sección de documentos para una espera confortable.')
                                                 : isHotel
                                                     ? 'He organizado tu plan de estancia. Tienes la información del hotel y los pasos a seguir en tu sección de documentos.'
                                                     : isEco
-                                                        ? 'Documentación legal finalizada. Tu reclamación EU261 está lista en tu sección de documentos para ser firmada y enviada.'
+                                                        ? 'Legal documentation finalized. Your EU261 claim is ready in your documents section to be signed and sent.'
                                                         : 'He terminado de analizar tus opciones. Tienes toda la información y planes de vuelo en tu sección de documentos.'
                                         );
                                     }
@@ -867,8 +867,8 @@ export default function GlobalOverlays() {
                                         style={[s.bt, { backgroundColor: '#AF52DE', borderRadius: 12, marginBottom: 10 }]}
                                         onPress={() => {
                                             Alert.alert(
-                                                "🚅 ESTRATEGIA DE TRANSPORTE",
-                                                "Tienes derecho legal a un Tren (AVE) o Autobús gratuito para llegar a tu destino original. \n\nPASOS A SEGUIR:\n1. Dirígete ahora mismo al mostrador de la aerolínea.\n2. Muestra este ticket y exige tu traslado bajo la ley EU261.\n3. Si no te dan solución, adquiere el billete de AVE y guarda el recibo para el reembolso total."
+                                                "🚅 TRANSPORT STRATEGY",
+                                                "You have a legal right to a free Train or Bus to reach your original destination. \n\nSTEPS TO FOLLOW:\n1. Go to the airline counter right now.\n2. Show this ticket and demand your transfer under the EU261 law.\n3. If they don't provide a solution, purchase the train ticket and keep the receipt for a full refund."
                                             )
                                         }}
                                     >
@@ -910,7 +910,7 @@ export default function GlobalOverlays() {
                                             setTab('Vault')
                                             setTimeout(() => {
                                                 setShowSignature(true)
-                                                speak("He preparado tu reclamación de 250 euros. Introduce tu DNI y firma para finalizar.")
+                                                speak("I have prepared your 250 euro claim. Enter your ID and sign to finish.")
                                             }, 500)
                                         }}
                                     >

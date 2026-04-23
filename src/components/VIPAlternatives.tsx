@@ -202,7 +202,7 @@ export default function VIPAlternatives({
                     <View style={{ backgroundColor: '#111', paddingTop: 40, paddingBottom: 25, paddingHorizontal: 25, borderBottomWidth: 1, borderBottomColor: '#222', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                         <View>
                             <Text style={{ color: '#4CD964', fontSize: 10, fontWeight: '900', letterSpacing: 2, marginBottom: 6 }}>⚖️ INFO RECOPILADA</Text>
-                            <Text style={{ color: '#FFF', fontSize: 22, fontWeight: '900' }}>Reclamación EU261</Text>
+                            <Text style={{ color: '#FFF', fontSize: 22, fontWeight: '900' }}>EU261 Claim</Text>
                         </View>
                         <TouchableOpacity onPress={() => setDetailView(null)} style={{ padding: 10 }}>
                             <Text style={{ color: '#4CD964', fontSize: 16 }}>✕</Text>
@@ -330,7 +330,7 @@ export default function VIPAlternatives({
                             { icon: '🍽️', title: 'Comida y bebida', desc: 'Proporcionada por la aerolínea durante la espera.' },
                             { icon: '📱', title: 'Comunicaciones', desc: 'Acceso a llamadas, email o fax (2 usos mínimo).' },
                             { icon: '🏨', title: 'Hotel si es necesario', desc: 'Si la espera requiere pernocta, hotel + traslado incluido.' },
-                            { icon: '💶', title: 'Compensación económica', desc: 'Tu reclamación EU261 sigue activa e independiente.' },
+                            { icon: '💶', title: 'Financial compensation', desc: 'Your EU261 claim remains active and independent.' },
                         ].map((item, idx) => (
                             <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 16, backgroundColor: '#0A0A0A', padding: 14, borderRadius: 12 }}>
                                 <Text style={{ fontSize: 20, marginRight: 12, marginTop: 2 }}>{item.icon}</Text>
@@ -343,7 +343,7 @@ export default function VIPAlternatives({
 
                         <View style={{ backgroundColor: 'rgba(90,200,250,0.06)', padding: 14, borderRadius: 12, borderWidth: 0.5, borderColor: 'rgba(90,200,250,0.2)', marginBottom: 20 }}>
                             <Text style={{ color: '#999', fontSize: 11, lineHeight: 17 }}>
-                                Conserva todos los tickets, facturas y comprobantes. Son necesarios para incluirlos en la reclamación y maximizar tu compensación.
+                                Keep all tickets, invoices and receipts. They are necessary to include them in the claim and maximize your compensation.
                             </Text>
                         </View>
 
@@ -442,7 +442,7 @@ export default function VIPAlternatives({
                                             <View style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: 'rgba(76,217,100,0.1)', justifyContent: 'center', alignItems: 'center', marginRight: 12 }}>
                                                 <Text style={{ fontSize: 20 }}>📋</Text>
                                             </View>
-                                            <Text style={{ color: '#FFF', fontSize: 16, fontWeight: '800', flex: 1 }}>Reclamación preparada</Text>
+                                            <Text style={{ color: '#FFF', fontSize: 16, fontWeight: '800', flex: 1 }}>Claim prepared</Text>
                                         </View>
                                         <Text style={{ color: '#888', fontSize: 12, lineHeight: 18, marginBottom: 14, marginLeft: 52 }}>
                                             Tu incidencia ya está resumida para revisión y envío.
@@ -516,7 +516,7 @@ export default function VIPAlternatives({
                                         <Text style={{ color: '#FFF', fontSize: 16, fontWeight: '800', flex: 1 }}>Asistencia y Cobertura</Text>
                                     </View>
                                     <Text style={{ color: '#888', fontSize: 12, lineHeight: 18, marginBottom: 14, marginLeft: 52 }}>
-                                        Descubre tus derechos de alimentación y alojamiento garantizados por ley.
+                                        Discover your food and accommodation rights guaranteed by law.
                                     </Text>
                                     <View style={{ marginLeft: 52 }}>
                                         <View style={{ backgroundColor: 'rgba(90,200,250,0.12)', paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8, alignSelf: 'flex-start' }}>

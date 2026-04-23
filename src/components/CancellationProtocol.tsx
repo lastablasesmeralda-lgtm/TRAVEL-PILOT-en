@@ -88,7 +88,7 @@ export default function CancellationProtocol({
                                 onOpenVIP('lounge');
                             })}
 
-                            {renderAction('⚖️', 'Reclamación Prioritaria', 'Tramitación inmediata del reembolso e indemnización', () => {
+                            {renderAction('⚖️', 'Priority Claim', 'Immediate processing of refund and compensation', () => {
                                 onGoToClaims();
                             })}
 
@@ -102,7 +102,7 @@ export default function CancellationProtocol({
                                 onGoToClaims();
                             }, true)}
 
-                            {renderAction('🍔', 'Comida y Alojamiento', 'Consulta tus derechos legales de asistencia (EU261)', () => {
+                            {renderAction('🍔', 'Food and Accommodation', 'Consult your legal assistance rights (EU261)', () => {
                                 onOpenVIP('planB');
                             })}
 
