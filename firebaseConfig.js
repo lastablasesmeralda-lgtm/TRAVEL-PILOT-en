@@ -3,12 +3,12 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDSkD6Z9Stj-Y0bNbKAwyzHH-M6i0o9Io0",
-  authDomain: "travel-pilot-a588c.firebaseapp.com",
-  projectId: "travel-pilot-a588c",
-  storageBucket: "travel-pilot-a588c.firebasestorage.app",
-  messagingSenderId: "240077613462",
-  appId: "1:240077613462:web:6ae04ea117175d6dad15b7"
+  apiKey: "AIzaSyDbRrjcx7_rjeEIq0-up_zQ-kmNIDDNjqA",
+  authDomain: "travel-pilot-en.firebaseapp.com",
+  projectId: "travel-pilot-en",
+  storageBucket: "travel-pilot-en.firebasestorage.app",
+  messagingSenderId: "854075271996",
+  appId: "1:854075271996:web:80a109ecaffe5e68b0cc39"
 };
 
 const app = initializeApp(firebaseConfig);
