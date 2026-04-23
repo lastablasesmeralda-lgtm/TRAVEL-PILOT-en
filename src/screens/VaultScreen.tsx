@@ -35,6 +35,7 @@ export default function VaultScreen() {
     const [uploadingDoc, setUploadingDoc] = useState(false);
     const [generatingPdf, setGeneratingPdf] = useState(false);
     const [showRights, setShowRights] = useState(false);
+    const [rightsTab, setRightsTab] = useState('EUROPE');
     const [hasSigned, setHasSigned] = useState(false);
     const [signedClaimId, setSignedClaimId] = useState<string | null>(null);
     const [capturedSignature, setCapturedSignature] = useState<string | null>(null);
@@ -641,65 +642,119 @@ export default function VaultScreen() {
                             <TouchableOpacity onPress={() => setShowActionModal(false)} style={{ marginTop: 20, alignItems: 'center' }}>
                                 <Text style={{ color: '#555', fontSize: 10 }}>CLOSE WINDOW</Text>
                             </TouchableOpacity>
-                        </View>
-                    </View>
-                </Modal>
-
-                {/* KNOW YOUR RIGHTS MODAL (EU261 PROTOCOL) */}
+                 {/* KNOW YOUR RIGHTS MODAL (GLOBAL PROTOCOL) */}
                 <Modal visible={showRights} animationType="slide" transparent>
                     <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.98)', paddingTop: 60 }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 25, marginBottom: 20 }}>
-                            <Text style={{ color: '#FFF', fontSize: 20, fontWeight: '900' }}>EU261 LEGAL PROTOCOL</Text>
+                            <Text style={{ color: '#FFF', fontSize: 20, fontWeight: '900' }}>GLOBAL PROTECTION GUIDE</Text>
                             <TouchableOpacity onPress={() => setShowRights(false)} style={{ backgroundColor: '#222', padding: 8, borderRadius: 15, width: 40, alignItems: 'center' }}>
                                 <Text style={{ color: '#FFF', fontWeight: 'bold' }}>✕</Text>
                             </TouchableOpacity>
                         </View>
 
-                        <ScrollView contentContainerStyle={{ padding: 25, paddingBottom: 100 }}>
-                            <Text style={{ color: '#AF52DE', fontSize: 13, fontWeight: 'bold', letterSpacing: 1.5, marginBottom: 10 }}>COMPENSATION TABLE 💶</Text>
-                            <Text style={{ color: '#B0B0B0', fontSize: 14, lineHeight: 20, marginBottom: 20 }}>
-                                European regulations protect you in case of serious incidents. These are the amounts you can claim per passenger:
-                            </Text>
+                        {/* REGION SELECTOR (TABS) */}
+                        <View style={{ flexDirection: 'row', paddingHorizontal: 25, gap: 10, marginBottom: 20 }}>
+                            {['EUROPE', 'USA', 'GLOBAL'].map((tab) => (
+                                <TouchableOpacity 
+                                    key={tab}
+                                    onPress={() => setRightsTab(tab)}
+                                    style={{ 
+                                        flex: 1, 
+                                        paddingVertical: 12, 
+                                        borderRadius: 12, 
+                                        backgroundColor: rightsTab === tab ? '#AF52DE' : '#111',
+                                        borderWidth: 1,
+                                        borderColor: rightsTab === tab ? '#AF52DE' : '#333',
+                                        alignItems: 'center'
+                                    }}
+                                >
+                                    <Text style={{ color: rightsTab === tab ? '#FFF' : '#666', fontSize: 10, fontWeight: '900' }}>{tab}</Text>
+                                </TouchableOpacity>
+                            ))}
+                        </View>
 
-                            <View style={{ backgroundColor: '#111', padding: 20, borderRadius: 20, marginBottom: 10, borderWidth: 1, borderColor: '#222' }}>
-                                <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>250€</Text>
-                                <Text style={{ color: '#888', fontSize: 12 }}>Short flights (up to 1,500 km)</Text>
-                            </View>
-                            <View style={{ backgroundColor: '#111', padding: 20, borderRadius: 20, marginBottom: 10, borderWidth: 1, borderColor: '#222' }}>
-                                <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>400€</Text>
-                                <Text style={{ color: '#888', fontSize: 12 }}>Medium flights (1,500 - 3,500 km)</Text>
-                            </View>
-                            <View style={{ backgroundColor: '#111', padding: 20, borderRadius: 20, marginBottom: 30, borderWidth: 1, borderColor: '#222' }}>
-                                <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>600€</Text>
-                                <Text style={{ color: '#888', fontSize: 12 }}>Long flights (more than 3,500 km)</Text>
-                            </View>
+                        <ScrollView contentContainerStyle={{ padding: 25, paddingBottom: 100 }}>
+                            {rightsTab === 'EUROPE' && (
+                                <>
+                                    <Text style={{ color: '#AF52DE', fontSize: 13, fontWeight: 'bold', letterSpacing: 1.5, marginBottom: 10 }}>EUROPE (EU261) 🇪🇺</Text>
+                                    <Text style={{ color: '#B0B0B0', fontSize: 14, lineHeight: 20, marginBottom: 20 }}>
+                                        European regulations protect you in case of serious incidents. These are the amounts you can claim per passenger:
+                                    </Text>
+                                    <View style={{ gap: 10, marginBottom: 30 }}>
+                                        <View style={{ backgroundColor: '#111', padding: 20, borderRadius: 20, borderWidth: 1, borderColor: '#222' }}>
+                                            <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>250€</Text>
+                                            <Text style={{ color: '#888', fontSize: 12 }}>Short flights (up to 1,500 km)</Text>
+                                        </View>
+                                        <View style={{ backgroundColor: '#111', padding: 20, borderRadius: 20, borderWidth: 1, borderColor: '#222' }}>
+                                            <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>400€</Text>
+                                            <Text style={{ color: '#888', fontSize: 12 }}>Medium flights (1,500 - 3,500 km)</Text>
+                                        </View>
+                                        <View style={{ backgroundColor: '#111', padding: 20, borderRadius: 20, borderWidth: 1, borderColor: '#222' }}>
+                                            <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>600€</Text>
+                                            <Text style={{ color: '#888', fontSize: 12 }}>Long flights (more than 3,500 km)</Text>
+                                        </View>
+                                    </View>
+                                </>
+                            )}
+
+                            {rightsTab === 'USA' && (
+                                <>
+                                    <Text style={{ color: '#AF52DE', fontSize: 13, fontWeight: 'bold', letterSpacing: 1.5, marginBottom: 10 }}>USA (DOT RIGHTS) 🇺🇸</Text>
+                                    <Text style={{ color: '#B0B0B0', fontSize: 14, lineHeight: 20, marginBottom: 20 }}>
+                                        In the US, federal law focuses on assistance and specific compensations for involuntary boarding denial.
+                                    </Text>
+                                    <View style={{ gap: 10, marginBottom: 30 }}>
+                                        <View style={{ backgroundColor: '#111', padding: 20, borderRadius: 20, borderWidth: 1, borderColor: '#222' }}>
+                                            <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>Up to $1,550</Text>
+                                            <Text style={{ color: '#888', fontSize: 12 }}>For Involuntary Overbooking</Text>
+                                        </View>
+                                        <View style={{ backgroundColor: '#111', padding: 20, borderRadius: 20, borderWidth: 1, borderColor: '#222' }}>
+                                            <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>FULL REFUND</Text>
+                                            <Text style={{ color: '#888', fontSize: 12 }}>If you choose not to travel after a significant delay</Text>
+                                        </View>
+                                        <View style={{ backgroundColor: '#111', padding: 20, borderRadius: 20, borderWidth: 1, borderColor: '#222' }}>
+                                            <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>ASSISTANCE</Text>
+                                            <Text style={{ color: '#888', fontSize: 12 }}>The airline must provide food/hotel vouchers</Text>
+                                        </View>
+                                    </View>
+                                </>
+                            )}
+
+                            {rightsTab === 'GLOBAL' && (
+                                <>
+                                    <Text style={{ color: '#AF52DE', fontSize: 13, fontWeight: 'bold', letterSpacing: 1.5, marginBottom: 10 }}>INT / LATAM (MONTREAL) 🌎</Text>
+                                    <Text style={{ color: '#B0B0B0', fontSize: 14, lineHeight: 20, marginBottom: 20 }}>
+                                        The Montreal Convention covers most international flights. It allows claiming for actual damages caused by the delay.
+                                    </Text>
+                                    <View style={{ gap: 10, marginBottom: 30 }}>
+                                        <View style={{ backgroundColor: '#111', padding: 20, borderRadius: 20, borderWidth: 1, borderColor: '#222' }}>
+                                            <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>Up to $7,000</Text>
+                                            <Text style={{ color: '#888', fontSize: 12 }}>Maximum liability for damages (SDR 5,346)</Text>
+                                        </View>
+                                        <View style={{ backgroundColor: '#111', padding: 20, borderRadius: 20, borderWidth: 1, borderColor: '#222' }}>
+                                            <Text style={{ color: '#FFF', fontSize: 18, fontWeight: 'bold' }}>EXPENSE REFUND</Text>
+                                            <Text style={{ color: '#888', fontSize: 12 }}>Hotels, meals and missed transport</Text>
+                                        </View>
+                                    </View>
+                                </>
+                            )}
 
                             <Text style={{ color: '#AF52DE', fontSize: 13, fontWeight: 'bold', letterSpacing: 1.5, marginBottom: 10 }}>GOLDEN RULES ⚖️</Text>
                             <View style={{ gap: 15, marginBottom: 30 }}>
-                                <Text style={{ color: '#B0B0B0', fontSize: 13, lineHeight: 18 }}>• <Text style={{ color: '#FFF', fontWeight: 'bold' }}>DELAY:</Text> You are entitled to compensation if you arrive at your final destination more than 3 hours late.</Text>
-                                <Text style={{ color: '#B0B0B0', fontSize: 13, lineHeight: 18 }}>• <Text style={{ color: '#FFF', fontWeight: 'bold' }}>CANCELLATION:</Text> If notified less than 14 days in advance. You have the right to a refund OR alternative transport.</Text>
-                                <Text style={{ color: '#B0B0B0', fontSize: 13, lineHeight: 18 }}>• <Text style={{ color: '#FFF', fontWeight: 'bold' }}>OVERBOOKING:</Text> If denied boarding against your will, the claim is immediate.</Text>
+                                <Text style={{ color: '#B0B0B0', fontSize: 13, lineHeight: 18 }}>• <Text style={{ color: '#FFF', fontWeight: 'bold' }}>DOCUMENTS:</Text> Always keep your boarding pass and all expense receipts (PDF or photo).</Text>
+                                <Text style={{ color: '#B0B0B0', fontSize: 13, lineHeight: 18 }}>• <Text style={{ color: '#FFF', fontWeight: 'bold' }}>REPORT:</Text> Request a written certificate of the delay/cancellation at the airline counter.</Text>
                             </View>
-
-                            <Text style={{ color: '#AF52DE', fontSize: 13, fontWeight: 'bold', letterSpacing: 1.5, marginBottom: 10 }}>IMMEDIATE ASSISTANCE 🍔</Text>
-                            <Text style={{ color: '#B0B0B0', fontSize: 13, lineHeight: 18, marginBottom: 30 }}>
-                                From a 2h delay, the airline MUST provide food, drink and two means of communication. If departure is the next day, they must pay for the hotel and transport.
-                            </Text>
-
-                            <Text style={{ color: '#FF3B30', fontSize: 13, fontWeight: 'bold', letterSpacing: 1.5, marginBottom: 10 }}>EXCEPTIONS (NO PAYMENT) ⚠️</Text>
-                            <Text style={{ color: '#B0B0B0', fontSize: 13, lineHeight: 18, marginBottom: 40 }}>
-                                There is no financial compensation if the problem was caused by "Extraordinary Circumstances": airspace closures, extreme weather, political instability or air traffic control strikes.
-                            </Text>
 
                             <TouchableOpacity
                                 onPress={() => setShowRights(false)}
                                 style={{ backgroundColor: '#AF52DE', padding: 18, borderRadius: 15, alignItems: 'center' }}
                             >
-                                <Text style={{ color: '#FFF', fontWeight: 'bold', letterSpacing: 1 }}>UNDERSTOOD</Text>
+                                <Text style={{ color: '#FFF', fontWeight: 'bold', letterSpacing: 1 }}>CLOSE GUIDE</Text>
                             </TouchableOpacity>
                         </ScrollView>
                     </View>
                 </Modal>
+
             </ScrollView>
 
             {/* SIGNATURE MODAL */}
